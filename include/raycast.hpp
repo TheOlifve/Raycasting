@@ -8,15 +8,20 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <iomanip>
 #include <stdlib.h>
 #include <cstdlib>
-#include <unistd.h>
-#include <map>
+#include <map> 
+#include <vector>
+
 
 #include "player.hpp"
 #include "scene.hpp"
 #include "texture.hpp"
+
+#define M_PI 3.14159265359
+#define M_PI_2 1.57079632679
 
 #define playerX	pl->getX()
 #define playerY	pl->getY()

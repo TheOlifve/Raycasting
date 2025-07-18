@@ -8,17 +8,19 @@ void check_leaks() {
 int main(int argc, char **argv) {
 	// std::atexit(check_leaks);
 	// oASD();
-	if (argc != 2) {
-		std::cerr << "Usage: " << argv[0] << " <map_file>" << std::endl;
-		return 1;
-	}
+
 	raycast *game;
+	char* defaultMap = "maps/map1";
 	
 	try {
 		game = new raycast();
 		
 		glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_TRUE);
-		if (game->initGame(argv[1])) {
+		if (argc == 2)
+		{
+			defaultMap = argv[1];
+		}	
+		if (game->initGame(defaultMap)) {
 			delete game;
 			std::cerr << "Failed to initialize game" << std::endl;
 			return 1;

@@ -6,6 +6,9 @@ double cosArr[rayCnt];
 double FOV = M_PI / 3;
 double rayStep = FOV / rayCnt;
 
+const int TARGET_FPS = 90;
+const int FRAME_DURATION = 1000 / TARGET_FPS;
+
 raycast::raycast() {
 	window = nullptr;
 	map = nullptr;
@@ -80,7 +83,7 @@ const int raycast::initGame(const char *filename) {
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	screenWidth = mode->width;
 	screenHeight = mode->height;
-	window = glfwCreateWindow(screenWidth, screenHeight, "RayCasting", NULL, NULL);
+	window = glfwCreateWindow(screenWidth, screenHeight, "RayCasting", glfwGetPrimaryMonitor() , NULL);
 	glfwGetFramebufferSize(window, &screenBuffWidth, &screenBuffHeight);
 	std::cout << "Screen: " << screenWidth << ":" << screenHeight << std::endl;
 
@@ -124,14 +127,26 @@ const int	raycast::startGame(void) {
 	auto end = std::chrono::high_resolution_clock::now();
 	
 	
-	while (!glfwWindowShouldClose(window)) {
+	while (!glfwWindowShouldClose(window)) 
+	{
+		auto frameStart = std::chrono::high_resolution_clock::now();
+
 		start = std::chrono::high_resolution_clock::now();
 		glClear(GL_COLOR_BUFFER_BIT);
 		playerInput();
 		renderScene(*currScene);
 		glfwSwapBuffers(window);
 		end = std::chrono::high_resolution_clock::now();
+
 		glfwPollEvents();
+		auto frameEnd = std::chrono::high_resolution_clock::now();
+    	auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(frameEnd - frameStart).count();
+    	if (elapsed < FRAME_DURATION) 
+		{
+        	std::this_thread::sleep_for(std::chrono::milliseconds(FRAME_DURATION - elapsed));
+    	}
+    frameStart = std::chrono::high_resolution_clock::now();
+
 	}
 	std::chrono::duration<double> elapsed = end - start;
 	std::cout << "Elapsed time: " << elapsed.count() << " seconds\n";

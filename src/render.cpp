@@ -244,7 +244,7 @@ void raycast::renderGame(const int &x1, const int &y1, const int &width, const i
 			glVertex2f(posX + 1,	posY + ((y + 1) * texturePixelHeight));
 			glVertex2f(posX,		posY + ((y + 1) * texturePixelHeight));
 		}
-		/*
+		
 		for (std::map<double, std::pair<int, int>>::reverse_iterator it = sprites.rbegin(); it != sprites.rend(); ++it)
 		{
 			for (double y = 16; y < 48; ++y)
@@ -264,14 +264,14 @@ void raycast::renderGame(const int &x1, const int &y1, const int &width, const i
 				wallHeight = maxWallHeight / (cosArr[posX] * it->first);
 				posY = (maxWallHeight - wallHeight) / 2;
 				texturePixelHeight = wallHeight / textureResolution;
-				glVertex2f((x1 * cosX + xA * sinX),	y1);
-				glVertex2f((x2 * cosX + xA * sinX),	y1);
-				glVertex2f((x2 * cosX + xA * sinX),	y2);
-				glVertex2f((x1 * cosX + xA * sinX),	y2);
-				// glVertex2f((x1),	y1);
-				// glVertex2f((x2),	y1);
-				// glVertex2f((x2),	y2);
-				// glVertex2f((x1),	y2);
+				// glVertex2f((x1 * cosX + xA * sinX),	y1);
+				// glVertex2f((x2 * cosX + xA * sinX),	y1);
+				// glVertex2f((x2 * cosX + xA * sinX),	y2);
+				// glVertex2f((x1 * cosX + xA * sinX),	y2);
+				glVertex2f((x1),	y1);
+				glVertex2f((x2),	y1);
+				glVertex2f((x2),	y2);
+				glVertex2f((x1),	y2);
 				// std::cout << "Vertex 1: (" << std::abs(x1 * cosX + xA * sinX) << ", " << y1 << ")\n";
 				// std::cout << "Vertex 2: (" << std::abs(x2 * cosX + xA * sinX) << ", " << y1 << ")\n";
 				// std::cout << "Vertex 3: (" << std::abs(x2 * cosX + xA * sinX) << ", " << y2 << ")\n";
@@ -280,7 +280,7 @@ void raycast::renderGame(const int &x1, const int &y1, const int &width, const i
 
 			}
 		}
-		*/
+		
 	}
 	++coinPosition;
 	if (coinPosition == 70)

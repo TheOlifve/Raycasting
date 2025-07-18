@@ -40,17 +40,17 @@ Raycasting-main/
 ## Build Instructions
 
 Prerequisites
-A `C++17` compatible compiler (e.g., **g++, clang++**) and OpenGL essentials ([GLFW](https://www.glfw.org/)).
+A `C++17` compatible compiler (**clang++**) and OpenGL essentials (for mac install [GLFW](https://www.glfw.org/) with `brew install glfw`).
 
 `make`
 
-This will compile the project and create an executable in the root directory **only for macOS** for now.
+This will compile the project and create an executable in the root directory **only for macOS and Windows** for now.
 Compiling the program in other systems depends on your version of system and supordted packages. You can find the
 main flags inside [MAKEFILE](MAKEFILE)
 
 Running the Program
 After compilation, you can run the program using:
-`./rc maps/map1 (or any other map)`
+`./rc maps/map1 (or any other map)` or by `./rc` or by opening `rc.exe` if you are on Windows machine.
 
 
 ## Maps

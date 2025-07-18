@@ -2,6 +2,10 @@
 #define PLAYER_HPP
 
 #include "raycast.hpp"
+#include <vector>
+
+#define M_PI 3.14159265359
+#define M_PI_2 1.57079632679
 
 #define rotationSpeed 0.05
 
